@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Globus Credit - Login</title>
+  <meta name="csrf-token" content="secure_random_token_here">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #eef2f3, #8e9eab);
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #004080;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    header h1 { margin: 0; }
+    .login-container, .admin-container, .create-account-container {
+      max-width: 400px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+    h2 { text-align: center; color: #004080; }
+    input[type="text"], input[type="password"], input[type="number"], input[type="email"], input[type="file"] {
+      width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px;
+    }
+    button {
+      width: 100%; padding: 12px; background-color: #004080; color: white;
+      border: none; border-radius: 5px; cursor: pointer; font-size: 16px;
+    }
+    button:hover { background-color: #003060; }
+    .account, .admin-panel, .virtual-card {
+      display: none; text-align: center; margin-top: 40px;
+    }
+    .transactions ul { list-style: none; padding: 0; }
+    .transactions li {
+      background: #f7f7f7; margin: 5px 0; padding: 10px; border-left: 4px solid #004080;
+    }
+    .currency-support { margin-top: 20px; font-size: 16px; }
+    .profile {
+      margin-top: 30px; text-align: left; max-width: 400px;
+      margin-left: auto; margin-right: auto;
+    }
+    .profile img { width: 100px; border-radius: 50%; margin-bottom: 15px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome to Globus Credit</h1>
+  </header>
+
+  <div class="login-container">
+    <h2>Login</h2>
+    <input type="hidden" id="csrfTokenLogin" value="secure_random_token_here">
+    <input type="text" id="username" placeholder="Username" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button onclick="login()">Login</button>
+  </div>
+
+  <div class="create-account-container">
+    <h2>Create Account</h2>
+    <input type="hidden" id="csrfTokenRegister" value="secure_random_token_here">
+    <input type="text" id="ssn" placeholder="SSN/SIN" required>
+    <input type="text" id="fullName" placeholder="Full Name" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="text" id="phone" placeholder="Phone Number" required>
+    <input type="text" id="address" placeholder="Address" required>
+    <input type="file" id="idCard" accept="image/png,image/jpeg" required>
+    <button onclick="submitAccountRequest()">Submit Request</button>
+  </div>
+
+  <div class="account" id="accountSection">
+    <h2>Account Balance</h2>
+    <p id="welcome"></p>
+    <p>Your current balance is: <strong id="balanceDisplay">$<span id="balanceAmount">5000.00</span></strong></p>
+    <button onclick="logout()">Logout</button>
+
+    <div class="transactions">
+      <h3>Transaction History</h3>
+      <ul id="transactionList">
+        <li>Deposit: $5,000.00</li>
+      </ul>
+      <button onclick="sendMoney()">Send Money</button>
+      <button onclick="payBill()">Pay Bills</button>
+      <button onclick="topUp()">Mobile Top-Up</button>
+      <button onclick="scanQR()">QR Payment</button>
+      <button onclick="setupRecurring()">Recurring Payment</button>
+    </div>
+
+    <div class="currency-support">
+      <p><strong>Supported Currencies:</strong> USD, EUR, GBP, NGN, JPY, CAD, AUD, INR, CNY, and more.</p>
+    </div>
+
+    <div class="virtual-card" id="virtualCard">
+      <h2>Virtual Card</h2>
+      <p>Card Number: 4111 1111 1111 1111</p>
+      <p>Expiry: 12/30</p>
+      <p>CVV: 123</p>
+      <button onclick="freezeCard()">Freeze Card</button>
+      <button onclick="resetPin()">Reset PIN</button>
+      <button onclick="generateNewCard()">Generate New Virtual Card</button>
+    </div>
+
+    <div class="profile">
+      <h2>User Profile</h2>
+      <img src="https://via.placeholder.com/100" alt="Profile Photo">
+      <p><strong>Full Name:</strong> John Doe</p>
+      <p><strong>Address:</strong> 123 Elm Street, Lagos, Nigeria</p>
+      <p><strong>Phone:</strong> +234 800 000 0000</p>
+      <p><strong>Email:</strong> johndoe@example.com</p>
+      <p><strong>Account Type:</strong> Premium Checking</p>
+    </div>
+  </div>
+
+  <!-- Tawk.to Live Chat Script Placeholder -->
+  <script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/YOUR_UNIQUE_ID/1habcdef';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+</body>
+</html>
